@@ -25,10 +25,7 @@ This code demonstrates different approaches to perform a summation operation and
 In summary, this code showcases different approaches to perform a summation operation in Ruby. It demonstrates a single-threaded approach, a multi-threaded approach using two threads, and a multi-process approach using two processes. The execution times for each approach are measured and compared.
 
 
-
-
-~~~~~~~~~~~~~~~~~~~~~
-#
+## singleThread() Method 
 
 The provided method `singleThread()` creates a new thread and performs a summation operation using an instance of the `SumUpExample` class. Here is a breakdown of the method:
 
@@ -44,7 +41,8 @@ The provided method `singleThread()` creates a new thread and performs a summati
 
 In summary, the `singleThread()` method creates a new thread to perform a summation operation using the `SumUpExample` class. By using threads, the method allows the summation to be executed concurrently with the main thread, potentially improving performance in scenarios where parallel execution is beneficial.
 
-~~~~~~~~~~~~~~~~~~~~~
+
+## runTwoProcesses() 
 
 The provided method `runTwoProcesses()` utilizes process forking to execute two separate processes concurrently, each performing a summation operation using an instance of the `SumUpExample` class. Here is a breakdown of the method:
 
