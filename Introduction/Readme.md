@@ -28,6 +28,7 @@ In summary, this code showcases different approaches to perform a summation oper
 
 
 ~~~~~~~~~~~~~~~~~~~~~
+#
 
 The provided method `singleThread()` creates a new thread and performs a summation operation using an instance of the `SumUpExample` class. Here is a breakdown of the method:
 
