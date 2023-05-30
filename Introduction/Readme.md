@@ -23,3 +23,45 @@ This code demonstrates different approaches to perform a summation operation and
 6. The code then measures the execution time of each approach using `Process.clock_gettime(Process::CLOCK_MONOTONIC)`. It calculates the time taken for each method, performs the summation, and outputs the execution time along with the resulting sum.
 
 In summary, this code showcases different approaches to perform a summation operation in Ruby. It demonstrates a single-threaded approach, a multi-threaded approach using two threads, and a multi-process approach using two processes. The execution times for each approach are measured and compared.
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~
+
+The provided method `singleThread()` creates a new thread and performs a summation operation using an instance of the `SumUpExample` class. Here is a breakdown of the method:
+
+1. `s = SumUpExample.new(1, MAX_NUM)`: This line creates a new instance of the `SumUpExample` class, passing `1` as the starting value and `MAX_NUM` as the maximum value for the summation.
+
+2. `thread = Thread.new do`: This line starts the creation of a new thread using the `Thread.new` method. The `do` block following it contains the code that will be executed in the new thread.
+
+3. `s.add()`: Inside the `do` block, `s.add()` invokes the `add()` method of the `SumUpExample` instance `s`. This method performs the summation operation.
+
+4. `thread.join()`: This line waits for the newly created thread to finish executing before proceeding. The `join()` method ensures that the main thread waits for the completion of the `thread`.
+
+5. `return s.getCounter()`: After the thread has finished its execution, the method returns the value of the counter variable from the `SumUpExample` instance `s` using the `getCounter()` method. This method retrieves the current value of the counter.
+
+In summary, the `singleThread()` method creates a new thread to perform a summation operation using the `SumUpExample` class. By using threads, the method allows the summation to be executed concurrently with the main thread, potentially improving performance in scenarios where parallel execution is beneficial.
+
+~~~~~~~~~~~~~~~~~~~~~
+
+The provided method `runTwoProcesses()` utilizes process forking to execute two separate processes concurrently, each performing a summation operation using an instance of the `SumUpExample` class. Here is a breakdown of the method:
+
+1. `read1, write1 = IO.pipe` and `read2, write2 = IO.pipe`: These lines create two pairs of pipes, `read1` and `write1`, and `read2` and `write2`. Pipes are a form of inter-process communication that allow data to be transferred between processes.
+
+2. `pid1 = Process.fork do`: This line starts the creation of a new process using the `Process.fork` method. The block following it contains the code that will be executed in the new process.
+
+3. `s = SumUpExample.new(1, MAX_NUM / 2)`, `s.add()`, `write1.puts s.getCounter()`: Inside the first process block, similar to the `singleThread()` method, a `SumUpExample` instance `s` is created, the summation is performed using `s.add()`, and the result is written to `write1` using `puts`.
+
+4. `pid2 = Process.fork do`: This line starts the creation of another process using `Process.fork`. The block following it contains the code that will be executed in this new process.
+
+5. `s = SumUpExample.new(1 + (MAX_NUM / 2), MAX_NUM)`, `s.add()`, `write2.puts s.getCounter()`: Inside the second process block, a new `SumUpExample` instance `s` is created, and the summation is performed on the remaining portion of the range. The result is written to `write2`.
+
+6. `Process.wait pid1` and `Process.wait pid2`: These lines make the parent process wait for the completion of the child processes with IDs `pid1` and `pid2` using `Process.wait`.
+
+7. `write1.close()` and `write2.close()`: The write ends of the pipes, `write1` and `write2`, are closed to indicate that no more data will be written to them.
+
+8. `(read1.read().to_i) + (read2.read().to_i)`: The method reads the values written to `read1` and `read2`, converts them to integers, and returns their sum as the result of the method.
+
+In summary, the `runTwoProcesses()` method utilizes process forking and inter-process communication to perform summation operations concurrently in two separate processes. This approach allows for potential performance improvements by leveraging parallel execution.
+
