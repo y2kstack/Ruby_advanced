@@ -18,3 +18,15 @@ A Program runnning on your machine broadly requires
 2) Memory
 3) Networking Resources
 4) Disk Storage
+
+
+# Throughput and Latency
+
+Throughput is defined as rate of doing work or how much work is done per unit of time
+Example: No of images downloaded from your phone or browser per unit of time
+
+
+Latency is the amount of time required to complete the task
+Latency is also referred as response time
+
+
