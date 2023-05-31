@@ -41,9 +41,17 @@ their applications are serverless ...
 
 The buzzword serverless is horrible, marketing term, and the internet is full of bad jokes
 
-#deadlocks
+# deadlocks
 
 Deadlocks occur when two or more threads aren't able to make any progress becasye the resource required by the first thread is held by the second and the resource required by the second thread is held by the first 
+
+# liveness
+
+the ability of a program or an application to execute in a timely manner is called liveness. if a program experiences a deadlock, then it's not exhibiting liveness.
+
+# live-lock 
+
+a live-lock occurs when two threads contionously react in response to the actions by the other thread without making any real progress
 
 
 
