@@ -30,3 +30,21 @@ Latency is the amount of time required to complete the task
 Latency is also referred as response time
 
 # Critical Sections Race Conditions
+
+
+
+# Aws Lambda/Serverless
+Serverless applications ar the bsic technical level are software that runs in an environment where the hosting provider is fully responsible for infrastrucural and operational tasks
+
+In the Amazon Web services cloud, the execution environment for serverless code is called AWS lamda. 
+their applications are serverless ...
+
+The buzzword serverless is horrible, marketing term, and the internet is full of bad jokes
+
+#deadlocks
+
+Deadlocks occur when two or more threads aren't able to make any progress becasye the resource required by the first thread is held by the second and the resource required by the second thread is held by the first 
+
+
+
+
