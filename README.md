@@ -29,4 +29,4 @@ Example: No of images downloaded from your phone or browser per unit of time
 Latency is the amount of time required to complete the task
 Latency is also referred as response time
 
-
+# Critical Sections Race Conditions
